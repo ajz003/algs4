@@ -30,14 +30,6 @@ class WeightedQuickUnionUF {
         }
         return p;
     }
-    findfind(p) {
-        this.validate(p);
-        while (p !== this.parent[p]) {
-            console.log(p, this.parent[p], "findfind")
-            p = this.parent[p];
-        }
-        return p;
-    }
 
     validate(p) {
         let n = this.parent.length;

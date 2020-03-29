@@ -96,15 +96,13 @@ class Percolation {
     percolates() { 
         // link all top nodes to virtual node, link all bottom nodes to virtual node
         let n = (this.grid[0].length*this.grid[0].length) + 2;
-        console.log(n)
         for (let i = 0; i < this.grid[0].length; i++) {
             this.uf.union(i, n-2)
         }
         for (let i = n - (this.grid[0].length+2); i < n - 2; i++) {
             this.uf.union(i, n-1)
         }
-        console.log(this.uf.parent);
-        if (this.uf.findfind(n-2) === this.uf.findfind(n-1)) {
+        if (this.uf.find(n-2) === this.uf.find(n-1)) {
             return true;
         }
         return false;
@@ -211,8 +209,8 @@ percolation.open(3, 4)
 percolation.open(7, 9)
 
 console.log(percolation.grid);
-console.log(percolation.numberOfOpenSites())
-console.log(percolation.percolates())
+console.log(percolation.numberOfOpenSites(), "number of open sites")
+console.log("Percolates? " + percolation.percolates())
 
 
 // let percolates = false;
