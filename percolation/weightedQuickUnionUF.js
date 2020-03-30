@@ -1,16 +1,3 @@
-// const fs = require('fs');
-
-// var readline = require('readline');
-// var rl = readline.createInterface({
-//   input: process.stdin,
-//   output: process.stdout,
-//   terminal: false
-// });
-
-// rl.on('line', function(line){
-//     console.log(line);
-// })
-
 class WeightedQuickUnionUF {
 
     constructor(n) {
@@ -54,24 +41,5 @@ class WeightedQuickUnionUF {
         this.count--;
     }
 }
-
-function main() {
-    var myArgs = process.argv.slice(2);
-
-    let n = myArgs[0];
-
-    let uf = new WeightedQuickUnionUF(n);
-
-    let p = 3
-    let q = 0
-    if (uf.find(p) === uf.find(q)) {
-
-    }
-    uf.union(p, q);
-    console.log(p + " " + q);
-
-    console.log(uf.count + " components")    
-}
-
 
 module.exports = WeightedQuickUnionUF;

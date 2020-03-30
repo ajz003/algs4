@@ -119,9 +119,6 @@ class Percolation {
         }
         return false;
     }
-
-    // test client (optional)
-    // static void main(String[] args)
 }
 
 module.exports = Percolation;
