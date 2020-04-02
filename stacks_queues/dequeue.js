@@ -8,6 +8,9 @@ class Node {
     }
 }
 
+
+// TODO: Now that we have a singly linked list, implement a doubly linked list to make 
+// removeLast() method perform at constant worst-case time
 class Deque {
 
     // construct an empty deque
