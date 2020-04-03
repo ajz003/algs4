@@ -32,6 +32,7 @@ class Deque {
     }
 
     // add the item to the front
+    // TODO: Try out prev.next/next.prev to avoid using oldfirst/oldlast (loitering?)
     addFirst(item) {
         if (item === null) throw "IllegalArgumentException"
 
@@ -53,6 +54,7 @@ class Deque {
     }
 
     // add the item to the back
+    // TODO: Try out prev.next/next.prev to avoid using oldfirst/oldlast (loitering?)
     addLast(item) {
         if (item === null) throw "IllegalArgumentException"
 
