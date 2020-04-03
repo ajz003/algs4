@@ -4,13 +4,11 @@
 class Node {
     constructor() {
         this.item = null;
+        this.prev = null;
         this.next = null;
     }
 }
 
-
-// TODO: Now that we have a singly linked list, implement a doubly linked list to make 
-// removeLast() method perform at constant worst-case time
 class Deque {
 
     // construct an empty deque
@@ -33,6 +31,7 @@ class Deque {
 
     // add the item to the front
     addFirst(item) {
+        if (item === null) throw "IllegalArgumentException"
         let oldfirst = this.first;
         let first = new Node();
         first.item = item;
@@ -40,6 +39,7 @@ class Deque {
             this.first = first;
             this.last = this.first;
         } else {
+            oldfirst.prev = first;
             first.next = oldfirst;
             this.first = first;
         }
@@ -48,6 +48,7 @@ class Deque {
 
     // add the item to the back
     addLast(item) {
+        if (item === null) throw "IllegalArgumentException"
 
         let oldlast = this.last;
         let last = new Node();
@@ -58,6 +59,7 @@ class Deque {
             this.first = this.last;
         } else {
             oldlast.next = last;
+            last.prev = oldlast;
             this.last = last;
         }
         this.n++;
@@ -86,17 +88,30 @@ class Deque {
         } else {
 
             let oldlast = this.last;
-            let secondToLast;
-            if (this.last !== this.first) {
-                secondToLast = this.first;
-                if (secondToLast.next.next !== null) {
-                    while (secondToLast.next.next !== null) {
-                        secondToLast = secondToLast.next;
-                    }
-                }
 
-                secondToLast.next = null;
-                this.last = secondToLast;
+            // For loop implementation
+            // let secondToLast;
+
+            // For doubly linked list
+            let last;
+
+            if (this.last !== this.first) {
+                // Loop implementation
+
+                // secondToLast = this.first;
+                // if (secondToLast.next.next !== null) {
+                //     while (secondToLast.next.next !== null) {
+                //         secondToLast = secondToLast.next;
+                //     }
+                // }
+                // secondToLast.next = null;
+                // this.last = secondToLast;
+
+
+                // Doubly linked list implementation. This keeps things constant time (worst-case)
+                last = oldlast.prev;
+                last.next = null;
+                this.last = last;
             }
 
             this.n--;
@@ -125,6 +140,9 @@ class Deque {
         for (let i = 1; i < n; i++) {
             console.log(this.removeLast(i));
         }
+        // for (let x = this.last; x !== null; x = x.prev) {
+        //     console.log(x.prev)
+        // }
     }
 
 }
