@@ -105,18 +105,20 @@ class Deque {
 
     // return an iterator over items in order from front to back
     iterator() {
-        for (var x = this.first; x !== null; x = x.next) {
+        for (var x = this.pre.next; x !== null; x = x.next) {
             console.log(x.item);
+            if (x.next === this.post) break;
         }
 
     }
 
     // unit testing (required)
     main(n) {
-        // You should see the numbers 1 through n in ascending order.
         for (let i = 1; i < n; i++) {
             this.addFirst(i);
         }
+        this.iterator();
+        // You should see the numbers 1 through n in ascending order.
         for (let i = 1; i < n; i++) {
             console.log(this.removeLast(i));
         }
