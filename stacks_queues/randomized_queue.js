@@ -79,17 +79,25 @@ class RandomizedQueue {
     }
 
     // return an independent iterator over items in random order
-    iterator() {
-        let copy = this.array;
+    [Symbol.iterator]() {
+        let copy = new Array(this.n);
+        for (let i = 0; i < this.n; i++) {
+            copy[i] = this.array[i];
+        }
+        let index = 0;
         shuffle(copy);
 
-        for (let i = 0; i < this.n; i++) {
-            for (let j = 0; j < this.n; j++) {
-                process.stdout.write(copy[i] + "-" + copy[j] + " ");
+        return {
+          next: () => {
+            if (index < this.n) {
+              return {value: copy[index++], done: false}
+            } else {
+              return {done: true}
             }
-            console.log("\n")
+          }
         }
-    }
+      }
+
 
     // unit testing (required)
     main(args) {
@@ -100,11 +108,23 @@ class RandomizedQueue {
         console.log(this.sample());
         console.log(this.dequeue());
         console.log(this.size()); // 3
-        this.iterator();
     }
 
 }
 
 let random = new RandomizedQueue();
+
+random.enqueue(0);
+random.enqueue(1);
+random.enqueue(2);
+random.enqueue(3);
+random.enqueue(4);
+
+for (const a of random) {
+    for (const b of random) {
+        process.stdout.write(a + "-" + b + " ");
+    }
+    console.log("\n");
+}
 
 random.main();
