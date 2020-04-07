@@ -112,21 +112,45 @@ class Deque {
 
     }
 
+    // return an iterator over items in order from front to back
+    [Symbol.iterator]() {
+
+        let current = this.pre.next;
+
+        return {
+            next: () => {
+                if (current !== this.post) {
+                    let item = current.item
+                    current = current.next
+                    return ({value: item, done: false})
+                } else {
+                    return {done: true}
+                }
+                
+            }
+        }
+    }
+
     // unit testing (required)
     main(n) {
         for (let i = 1; i < n; i++) {
             this.addFirst(i);
         }
-        this.iterator();
-        // You should see the numbers 1 through n in ascending order.
-        for (let i = 1; i < n; i++) {
-            console.log(this.removeLast(i));
-        }
-        console.log(this.isEmpty())
+        // console.log(this.iterator())
+        // // You should see the numbers 1 through n in ascending order.
+        // for (let i = 1; i < n; i++) {
+        //     console.log(this.removeLast(i));
+        // }
+        // console.log(this.isEmpty())
     }
 }
 
 let testQ = new Deque();
 
-testQ.main(5);
+for (let i = 1; i < 5; i++) {
+    testQ.addFirst(i);
+}
+for (const val of testQ) {
+    console.log(val);
+}
 // testQ.iterator();
