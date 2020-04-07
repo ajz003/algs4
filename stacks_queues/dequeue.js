@@ -9,7 +9,7 @@ class Node {
     }
 }
 
-class Deque {
+export default class Deque {
 
     // construct an empty deque
     constructor() {

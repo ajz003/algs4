@@ -114,17 +114,19 @@ class RandomizedQueue {
 
 let random = new RandomizedQueue();
 
-random.enqueue(0);
-random.enqueue(1);
-random.enqueue(2);
-random.enqueue(3);
-random.enqueue(4);
+// random.enqueue(0);
+// random.enqueue(1);
+// random.enqueue(2);
+// random.enqueue(3);
+// random.enqueue(4);
 
-for (const a of random) {
-    for (const b of random) {
-        process.stdout.write(a + "-" + b + " ");
-    }
-    console.log("\n");
-}
+// for (const a of random) {
+//     for (const b of random) {
+//         process.stdout.write(a + "-" + b + " ");
+//     }
+//     console.log("\n");
+// }
 
-random.main();
+// random.main();
+
+module.exports = RandomizedQueue;

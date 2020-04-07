@@ -153,4 +153,5 @@ for (let i = 1; i < 5; i++) {
 for (const val of testQ) {
     console.log(val);
 }
-// testQ.iterator();
+
+module.exports = Deque;
