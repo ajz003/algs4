@@ -9,3 +9,7 @@ How to run:
 
         node PercolationStats.js 10 1000
     where the first argument is creating a n-by-n grid, and the second argument is the # of trials.
+
+## Collinear Points
+
+Run `node BruteCollinearPoints.js && node FastCollinearPoints.js` to compare execution times between `BruteCollinearPoints.js` and `FastCollinearPoints.js`
